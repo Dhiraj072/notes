@@ -1,0 +1,16 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/Dhiraj072/notes",
+  "author": "Dhiraj Bhatt",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "nodemon": "^1.18.3"
+  }
+}

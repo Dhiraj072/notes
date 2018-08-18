@@ -2,20 +2,22 @@ console.log('Starting app');
 
 const fs = require('fs');
 const _ = require('lodash');
+const yargs = require('yargs');
 
 const notes = require('./notes');
 
-const command = process.argv[2];
+const command = yargs.argv._[0];
 console.log('Command: ', command);
+const argv = yargs.argv;
 
 if (command === 'add') {
-    // Add note
+    notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
-    // list notes
+    notes.getAll();
 } else if (command == 'read') {
-    // read
+    notes.readNote(argv.title);
 } else if (command == 'remove') {
-    // remove note
+    notes.removeNote(argv.title);
 } else {
-    // Unknown
+    console.log("Unidentified command", command);
 }

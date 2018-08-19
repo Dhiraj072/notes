@@ -1,5 +1,3 @@
-console.log('Starting app');
-
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
@@ -7,17 +5,30 @@ const yargs = require('yargs');
 const notes = require('./notes');
 
 const command = yargs.argv._[0];
-console.log('Command: ', command);
 const argv = yargs.argv;
 
 if (command === 'add') {
-    notes.addNote(argv.title, argv.body);
+    try {
+        notes.addNote(argv.title, argv.body);
+        console.log("Successfully added note");
+    } catch (err) {
+        console.log(err.message);
+    }
 } else if (command === 'list') {
-    notes.getAll();
+    try {
+        notes.fetchNotes()
+    } catch (err) {
+        console.log(err.message);
+    }
 } else if (command == 'read') {
     notes.readNote(argv.title);
 } else if (command == 'remove') {
-    notes.removeNote(argv.title);
+    try {
+        notes.removeNote(argv.title);
+        console.log(`Note ${argv.title} removed`);
+    } catch (err) {
+        console.log(err.message);
+    }
 } else {
     console.log("Unidentified command", command);
 }

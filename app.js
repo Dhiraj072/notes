@@ -21,7 +21,12 @@ if (command === 'add') {
         console.log(err.message);
     }
 } else if (command == 'read') {
-    notes.readNote(argv.title);
+    try {
+        const note = notes.readNote(argv.title);
+        console.log(`Title: ${note.title} \n Body: ${note.body}`);
+    } catch(err) {
+        console.log(err.message);
+    }
 } else if (command == 'remove') {
     try {
         notes.removeNote(argv.title);

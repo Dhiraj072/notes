@@ -29,7 +29,13 @@ const addNote = (title, body) => {
 }
 
 const readNote = (title) => {
-    console.log("Read", title);
+    let notes = fetchNotes();
+    const matchingNotes = notes.filter((note) => note.title === title);
+    if (matchingNotes.length > 0) {
+        return matchingNotes[0];
+    } else {
+        throw new Error(`Unable to find note with title ${title}`);
+    }
 }
 
 const removeNote = (title) => {

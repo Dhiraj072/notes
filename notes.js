@@ -48,9 +48,21 @@ const removeNote = (title) => {
     }
 }
 
+const logNotes = (notes) => {
+    notes.forEach((note) => {
+        logNote(note);
+    });
+}
+
+const logNote = (note) => {
+    console.log(`Title: ${note.title} \t Body: ${note.body}`);
+}
+
 module.exports = {
     addNote,
     fetchNotes,
     readNote,
-    removeNote
+    removeNote,
+    logNote,
+    logNotes
 };

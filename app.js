@@ -16,14 +16,14 @@ if (command === 'add') {
     }
 } else if (command === 'list') {
     try {
-        notes.fetchNotes()
+        notes.logNotes(notes.fetchNotes());
     } catch (err) {
         console.log(err.message);
     }
 } else if (command == 'read') {
     try {
         const note = notes.readNote(argv.title);
-        console.log(`Title: ${note.title} \n Body: ${note.body}`);
+        notes.logNote(note);
     } catch(err) {
         console.log(err.message);
     }

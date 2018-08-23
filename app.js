@@ -18,6 +18,21 @@ const argv = yargs
                     alias: 'b'
                 }
             })
+            .command('list', 'List all notes')
+            .command('read', 'Read a note', {
+                title: {
+                    describe: 'Title of the note',
+                    demand: true,
+                    alias: 't'
+                }
+            })
+            .command('remove', 'Remove a note', {
+                title: {
+                    describe: 'Title of the note',
+                    demand: true,
+                    alias: 't'
+                }
+            })
             .help()
             .argv;
 
